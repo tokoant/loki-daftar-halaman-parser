@@ -7,12 +7,20 @@ import { load } from 'cheerio';
 import axios from 'axios';
 
 const fetchHtml = async (url: string) => {
-  const { data } = await axios.get(url);
-  return data;
+  try {
+    const { data } = await axios.get(url);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }
 
 const checkIfIsBrokenLink = async (url: string) => {
   const htmlStr = await fetchHtml(url);
+  if (htmlStr === null){
+    return true;
+  }
   const $ = load(htmlStr.toString());
   const containers = $('div[data-unify^="GlobalError"]');
   if (!containers) return false;
