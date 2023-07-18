@@ -1,0 +1,1 @@
+export const TARGETED_DAFTAR_HALAMAN_URL = 'https://www.tokopedia.com/daftar-halaman/'
