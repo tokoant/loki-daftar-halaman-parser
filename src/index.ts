@@ -23,7 +23,7 @@ const checkIfIsBrokenLink = async (url: string) => {
   }
   const $ = load(htmlStr.toString());
   const containers = $('div[data-unify^="GlobalError"]');
-  if (!containers) return false;
+  if (containers.length === 0) return false;
   return true;
 };
 
